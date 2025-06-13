@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import ProductCard from "./ProductCard";
-import productsData from "../data/products"; // fallback static data
+import productsData from "../data/products";
 
-const ProductGrid = () => {
-  const [products, setProducts] = useState([]);
+// Server-side fetch (simulated with try-catch)
+const ProductGrid = async () => {
+  let products = [];
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await axios.get("https://your-api.com/products"); // replace with actual API
-        const data = res.data;
+  try {
+    const res = await fetch("https://your-api-url.com/products", {
+      // force dynamic so fetch runs at request time (for dynamic server component)
+      cache: "no-store",
+    });
 
-        if (Array.isArray(data) && data.length > 0) {
-          setProducts(data);
-        } else {
-          setProducts(productsData); // fallback if empty
-        }
-      } catch (error) {
-        console.error("API fetch failed, using fallback data:", error.message);
-        setProducts(productsData); // fallback if error
-      }
-    };
+    if (!res.ok) throw new Error("API Failed");
 
-    fetchProducts();
-  }, []);
+    const data = await res.json();
+
+    products = data.length > 0 ? data : productsData;
+  } catch (err) {
+    products = productsData;
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-gray-900 p-6 min-h-screen">
