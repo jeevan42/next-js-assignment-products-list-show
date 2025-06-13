@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ProductCard from "./ProductCard";
-import productsData from '../data/products';
-
+import productsData from "../data/products"; // fallback static data
 
 const ProductGrid = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Simulated API call
-    setTimeout(() => {
+    const fetchProducts = async () => {
       try {
-        // Simulate fetched data (you can toggle empty array to simulate failure)
-        const fetchedData = [];
+        const res = await axios.get("https://your-api.com/products"); // replace with actual API
+        const data = res.data;
 
-        if (fetchedData.length > 0) {
-          setProducts(fetchedData);
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
         } else {
-          setProducts(productsData);
+          setProducts([]); // fallback if empty
         }
       } catch (error) {
-        setProducts(productsData);
+        console.error("API fetch failed, using fallback data:", error.message);
+        setProducts([]); // fallback if error
       }
-    }, 1000);
+    };
+
+    fetchProducts();
   }, []);
 
   return (
