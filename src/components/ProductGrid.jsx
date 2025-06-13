@@ -15,11 +15,11 @@ const ProductGrid = () => {
         if (Array.isArray(data) && data.length > 0) {
           setProducts(data);
         } else {
-          setProducts([]); // fallback if empty
+          setProducts(productsData); // fallback if empty
         }
       } catch (error) {
         console.error("API fetch failed, using fallback data:", error.message);
-        setProducts([]); // fallback if error
+        setProducts(productsData); // fallback if error
       }
     };
 
