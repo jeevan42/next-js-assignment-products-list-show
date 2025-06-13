@@ -19,4 +19,14 @@ This is a modern product grid built with **React** (Next.js ready) that:
 /README.md // Project overview and usage
 </pre>
 
+
+---
+
+## 🚀 Features
+
+- ✅ Server-side rendering (no `use client`)
+- ✅ API fetch with graceful fallback
+- ✅ Responsive layout (1-4 columns based on screen size)
+- ✅ Clean, modular code structure
+
 ---
