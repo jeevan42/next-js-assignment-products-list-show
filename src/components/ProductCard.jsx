@@ -1,13 +1,36 @@
-// src/components/ProductCard.jsx
+import { Bookmark, ShoppingCart } from "lucide-react";
 
-export default function ProductCard({ product }) {
+const ProductCard = ({ product }) => {
   return (
-    <div className="border p-4 rounded shadow hover:shadow-lg transition">
-      <img src={product.image} alt={product.title} className="w-full h-48 object-contain mb-2" />
-      <h2 className="text-lg font-semibold">{product.title}</h2>
-      <p className="text-gray-500 text-sm">{product.category}</p>
-      <p className="text-green-600 font-bold">${product.price}</p>
-      <p className="text-yellow-600 text-sm">⭐ {product.rating.rate} ({product.rating.count} reviews)</p>
+    <div className="bg-black text-white p-2 rounded-md relative">
+      {/* Bookmark Icon */}
+      <button className="absolute top-2 right-2">
+        <Bookmark className="w-5 h-5 text-white" />
+      </button>
+
+      {/* Product Image */}
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-64 object-cover rounded"
+      />
+
+      {/* Product Info */}
+      <div className="mt-2">
+        <p className="text-sm">{product.name}</p>
+        <div className="flex items-center gap-2 mt-1">
+          <span className="text-white font-semibold">₹{product.price}</span>
+          <span className="text-gray-400 text-sm line-through">₹{product.originalPrice}</span>
+          <span className="text-green-500 text-sm">({product.discount}% Off)</span>
+        </div>
+      </div>
+
+      {/* Cart Icon */}
+      <button className="absolute bottom-2 right-2">
+        <ShoppingCart className="w-5 h-5 text-white" />
+      </button>
     </div>
   );
-}
+};
+
+export default ProductCard;
