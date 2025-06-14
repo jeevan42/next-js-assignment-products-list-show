@@ -12,9 +12,9 @@ const ProductGrid = async () => {
     if (!res.ok) throw new Error("API failed");
 
     const data = await res.json();
-    products = data.length > 0 ? data : [];
+    products = data.length > 0 ? data : productsData;
   } catch (err) {
-    products = [];
+    products = productsData;
   }
 
   return (
