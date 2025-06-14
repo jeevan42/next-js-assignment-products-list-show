@@ -21,9 +21,9 @@ const ProductCard = ({ product }) => {
       <div className="p-4 pb-12">
         <h3 className="text-gray-800 font-medium text-base mb-2">{product.name}</h3>
         <div className="flex items-center gap-2">
-          <span className="text-gray-900 font-semibold text-lg">₹ {product.price}</span>
-          <span className="text-gray-400 text-sm line-through">{product.originalPrice}</span>
-          <span className="text-green-600 text-sm font-medium">({product.discount}% Off)</span>
+          <span className="text-gray-100 font-semibold text-lg">₹ {product.price}</span>
+          <span className="text-gray-400 text-sm line-through">{product.price * 2}</span>
+          <span className="text-green-600 text-sm font-medium">({product.discount || 50}% Off)</span>
         </div>
       </div>
 
