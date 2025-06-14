@@ -9,17 +9,27 @@ This is a modern product grid built with **React** (Next.js ready) that:
 
 ## 📁 Project Structure
 <pre>
-/components
-└── ProductGrid.jsx // Server Component for rendering product grid
-└── ProductCard.jsx // Individual product card UI
-/data
-└── products.js // Local fallback product data (used on API failure)
-/public
-└── ... // Static assets (images etc.)
-/README.md // Project overview and usage
+Directory structure:
+└── root
+    ├── README.md
+    ├── eslint.config.mjs
+    ├── jsconfig.json
+    ├── next.config.mjs
+    ├── package.json
+    ├── postcss.config.mjs
+    ├── public/
+    └── src/
+        ├── app/
+        │   ├── globals.css
+        │   ├── layout.js
+        │   └── page.js
+        ├── components/
+        │   ├── Header.jsx
+        │   ├── ProductCard.jsx
+        │   └── ProductGrid.jsx
+        └── data/
+            └── products.js
 </pre>
-
-
 ---
 
 ## 🚀 Features
