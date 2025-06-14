@@ -1,36 +1,38 @@
-import { Bookmark, ShoppingCart } from "lucide-react";
+import { Bookmark, ShoppingCart } from "lucide-react"
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-black text-white p-2 rounded-md relative">
+    <div className="bg-black border border-gray-200 rounded-lg shadow-sm relative max-w-sm">
       {/* Bookmark Icon */}
-      <button className="absolute top-2 right-2">
-        <Bookmark className="w-5 h-5 text-white" />
+      <button className="absolute top-3 right-3 z-10">
+        <Bookmark className="w-5 h-5 text-gray-600 hover:text-gray-800" />
       </button>
 
       {/* Product Image */}
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-full h-64 object-cover rounded"
-      />
+      <div className="relative">
+        <img
+          src={product.image || "/placeholder.svg"}
+          alt={product.name}
+          className="w-full h-80 object-cover rounded-t-lg"
+        />
+      </div>
 
       {/* Product Info */}
-      <div className="mt-2">
-        <p className="text-sm">{product.name}</p>
-        <div className="flex items-center gap-2 mt-1">
-          <span className="text-white font-semibold">₹{product.price}</span>
-          <span className="text-gray-400 text-sm line-through">₹{product.originalPrice}</span>
-          <span className="text-green-500 text-sm">({product.discount}% Off)</span>
+      <div className="p-4 pb-12">
+        <h3 className="text-gray-800 font-medium text-base mb-2">{product.name}</h3>
+        <div className="flex items-center gap-2">
+          <span className="text-gray-900 font-semibold text-lg">₹ {product.price}</span>
+          <span className="text-gray-400 text-sm line-through">{product.originalPrice}</span>
+          <span className="text-green-600 text-sm font-medium">({product.discount}% Off)</span>
         </div>
       </div>
 
       {/* Cart Icon */}
-      <button className="absolute bottom-2 right-2">
-        <ShoppingCart className="w-5 h-5 text-white" />
+      <button className="absolute bottom-3 right-3">
+        <ShoppingCart className="w-5 h-5 text-gray-600 hover:text-gray-800" />
       </button>
     </div>
-  );
-};
+  )
+}
 
 export default ProductCard;
