@@ -1,20 +1,16 @@
 import ProductCard from "./ProductCard";
 import productsData from "../data/products";
 
-// Server-side fetch (simulated with try-catch)
 const ProductGrid = async () => {
   let products = [];
 
   try {
     const res = await fetch("https://your-api-url.com/products", {
-      // force dynamic so fetch runs at request time (for dynamic server component)
-      cache: "no-store",
+      cache: "no-store", // SSR on every request
     });
-
-    if (!res.ok) throw new Error("API Failed");
+    if (!res.ok) throw new Error("API failed");
 
     const data = await res.json();
-
     products = data.length > 0 ? data : productsData;
   } catch (err) {
     products = productsData;

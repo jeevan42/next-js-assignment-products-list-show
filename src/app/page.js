@@ -1,7 +1,4 @@
-// src/app/page.js
-
-'use client';
-import ProductGrid from '@/components/ProductGrid';
+import ProductGrid from "@/components/ProductGrid";
 
 export default function HomePage() {
   return (

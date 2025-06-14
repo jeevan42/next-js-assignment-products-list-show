@@ -1,14 +1,14 @@
-import { Bookmark, ShoppingCart } from "lucide-react"
+'use client';
+
+import { Bookmark, ShoppingCart } from "lucide-react";
 
 const ProductCard = ({ product }) => {
   return (
     <div className="bg-black border border-gray-200 rounded-lg shadow-sm relative max-w-sm">
-      {/* Bookmark Icon */}
       <button className="absolute top-3 right-3 z-10">
         <Bookmark className="w-5 h-5 text-gray-600 hover:text-gray-800" />
       </button>
 
-      {/* Product Image */}
       <div className="relative">
         <img
           src={product.image || "/placeholder.svg"}
@@ -17,7 +17,6 @@ const ProductCard = ({ product }) => {
         />
       </div>
 
-      {/* Product Info */}
       <div className="p-4 pb-12">
         <h3 className="text-gray-800 font-medium text-base mb-2">{product.name}</h3>
         <div className="flex items-center gap-2">
@@ -27,12 +26,11 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      {/* Cart Icon */}
       <button className="absolute bottom-3 right-3">
         <ShoppingCart className="w-5 h-5 text-gray-600 hover:text-gray-800" />
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default ProductCard;
