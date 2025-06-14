@@ -1,5 +1,6 @@
 import ProductCard from "./ProductCard";
 import productsData from "../data/products";
+import Header from "./Header";
 
 const ProductGrid = async () => {
   let products = [];
@@ -17,11 +18,14 @@ const ProductGrid = async () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-black p-6 min-h-screen">
-      {products.map((item, idx) => (
-        <ProductCard key={idx} product={item} />
-      ))}
-    </div>
+    <>
+      <Header productsLength={products.length || 0} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-black p-6 min-h-screen">
+        {products.map((item, idx) => (
+          <ProductCard key={idx} product={item} />
+        ))}
+      </div>
+    </>
   );
 };
 

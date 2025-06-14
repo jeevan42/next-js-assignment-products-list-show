@@ -1,6 +1,6 @@
 import { Search, User, Bookmark, ShoppingCart, SlidersHorizontal } from "lucide-react"
 
-const Header = () => {
+const Header = ({ productsLength }) => {
     const categories = ["Bags", "Travel", "Accessories", "Gifting", "Jewelery"]
 
     const bagTypes = [
@@ -185,7 +185,7 @@ const Header = () => {
                     <span className="text-white font-light">Backpacks</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                    <span className="text-gray-400 text-sm font-light">13 products</span>
+                    <span className="text-gray-400 text-sm font-light">{productsLength || 0} products</span>
                     <button className="text-gray-400 hover:text-white transition-colors">
                         <SlidersHorizontal className="w-4 h-4" />
                     </button>
