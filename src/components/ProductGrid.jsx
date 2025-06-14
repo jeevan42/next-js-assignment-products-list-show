@@ -5,15 +5,15 @@ const ProductGrid = async () => {
   let products = [];
 
   try {
-    const res = await fetch("https://your-api-url.com/products", {
+    const res = await fetch("https://fakestoreapi.com/products", {
       cache: "no-store", // SSR on every request
     });
     if (!res.ok) throw new Error("API failed");
 
     const data = await res.json();
-    products = data.length > 0 ? data : productsData;
+    products = data.length > 0 ? data : [];
   } catch (err) {
-    products = productsData;
+    products = [];
   }
 
   return (
